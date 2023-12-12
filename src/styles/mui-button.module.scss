@@ -1,0 +1,16 @@
+.section {
+  border: 1px solid #000;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .button {
+    background-color: red;
+    &:hover {
+      background-color: green;
+    }
+  }
+}
