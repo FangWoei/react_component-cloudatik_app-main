@@ -1,35 +1,63 @@
 import React from "react";
 import "../styles/icon.css";
 import PropTypes from "prop-types";
+import sprite from "../stories/assets/all_icons.svg";
 
-export const WaterIcon = ({ color, shape, width, label, ...props }) => {
+export const Icon = ({
+  color,
+  width,
+  height,
+  label,
+  LabelColor,
+  LabelSize,
+  ...props
+}) => {
+  // console.log(props.sprite);
   return (
     <>
-      <svg
-        version="1.1"
-        id="water-15"
-        xmlns="http://www.w3.org/2000/svg"
-        width={width}
-        style={color && { color }}
-        viewBox="0 0 15 15"
-        {...props}>
-        <path d="M7.49,15C4.5288,14.827,2.1676,12.4615,2,9.5C2,6.6,6.25,1.66,7.49,0c1.24,1.66,5,6.59,5,9.49S10.17,15,7.49,15z" />
-        {shape}
-      </svg>
-      {label}
+      <div className="icon-container">
+        <svg
+          viewBox="0 0 100 50"
+          width={`${width}`}
+          height={`${height}`}
+          style={{ fill: color }}
+          {...props}>
+          <use xlinkHref={`${sprite}#${props.sprite}`}></use>
+        </svg>
+      </div>
+      <h1 style={{ color: LabelColor, fontSize: `${LabelSize}px` }}>{label}</h1>
     </>
   );
 };
 
-WaterIcon.propTypes = {
+Icon.propTypes = {
   color: PropTypes.string,
-  shape: PropTypes.oneOf(["electric", "pH", "thermometer"]),
   width: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  height: PropTypes.string,
+  sprite: PropTypes.oneOf([
+    "home_vpd",
+    "home_water",
+    "cloud_temp",
+    "cloud_water",
+    "cloud_vpd",
+    "icon-sun",
+    "total_radiation",
+    "water_ec",
+    "water_ph",
+    "water_temp",
+    "pump_state",
+  ]),
+  label: PropTypes.string,
+  LabelColor: PropTypes.string,
+  LabelSize: PropTypes.string,
 };
 
-WaterIcon.defaultProps = {
+Icon.defaultProps = {
   color: null,
-  shape: "electric",
-  size: "50px",
+  width: 50,
+  height: 50,
+  sprite: "#home_vpd",
+  label: "Hello World",
+  labelColor: "black",
+  labelSize: "16px",
 };

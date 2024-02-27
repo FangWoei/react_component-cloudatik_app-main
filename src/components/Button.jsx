@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../styles/button.css";
-import { SvgIcon } from "@mui/material";
 
 /**
  * Primary UI component for user interaction
@@ -21,12 +20,9 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
         {...props}>
         {label}
       </button>
-      
     </>
   );
 };
-
-
 
 Button.propTypes = {
   /**
